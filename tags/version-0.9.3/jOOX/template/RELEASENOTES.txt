@@ -1,0 +1,84 @@
+jOOX Release notes
+------------------
+For an overview, see also http://code.google.com/p/joox/issues/list
+
+Version 0.9.3
+=================================================================
+
+Features and improvements
+-------------------------
+#32  - Add Match.andSelf() to add the previous Match to the new 
+       Match 
+#37  - Add Match.each() to return a List<Match> containing every 
+       matched element as its own Match 
+#38  - Add Match.reverse() to reverse the order of matched 
+       elements 
+#39  - Add Match.child(String) to find the first child matching 
+       a tag name 
+
+Performance improvements
+------------------------
+#40  - Avoid constructing new Filter objects in all(), none(), 
+       even(), etc.
+#41  - Bad performance on Match.has(...) methods
+#42  - Avoid calling size() several times during iterations
+#44  - Don't return Collections.unmodifiableList() from 
+       Match.get()
+#45  - Match.get(int) should not try { } catch (
+       IndexOutOfBoundsException e) to access elements. Do the 
+       calculations instead  
+#46  - Bad performance on Match.find(...) methods 
+#47  - Avoid calling methods in for loops, especially 
+       NodeList.getLength()
+
+Version 0.9.2
+=================================================================
+
+Features and improvements
+-------------------------
+#1   - Add XPath support
+#5   - Use jOOQ's type conversion methods to add more convenience
+       in .text(), .texts(), .attr(), .attrs() - for numeric
+       and boolean types
+#14  - Document index behaviour for call-backs
+#19  - Allow for negative indexes in .eq()
+#22  - Enhance .eq(int...) to accept several indexes
+#25  - Implement Match.equals() and Match.hashCode()
+#27  - Add $(InputStream), $(InputSource), $(File), and others
+       to load XML from resources
+#30  - Add Match.document() to retrieve the underlying document
+       from a Match object
+#33  - Add $(Reader)
+#34  - Add Context.matchSize() and Context.elementSize()
+
+API changes (backwards-incompatible)
+------------------------------------
+#26  - Change API for callback types Each, Content, Filter,
+       Mapper to receive a general Context type, instead of
+       index and Element
+
+Version 0.9.1
+=================================================================
+
+Features and improvements
+-------------------------
+#4   - Allow for the creation of elements
+#10  - Add index filters and access-by-index for .children(),
+       .texts(), .contents(), .tags(), .ids()
+#11  - Add access-by-index to .text(), .content(), .child()
+#13  - Add filter JOOX.at(int...) to filter for indexes
+#20  - Add Match.isEmpty()
+#21  - Add convenience method to get all XPath's of matched
+       elements
+
+API changes (backwards-incompatible)
+------------------------------------
+#3   - Rename static factory method joox() to $()
+#23  - Rename X into Match
+
+Version 0.9.0
+=================================================================
+
+This is the initial release providing basic functionality. The
+most important parts of the jQuery API are ported to Java.
+Selectors only match tag names
